@@ -26,6 +26,7 @@ import java.util.Map;
 
 @RestController("userController")
 @RequestMapping("api/user")
+@CrossOrigin
 public class UserController {
 
     @Resource(name = "userService")
@@ -36,8 +37,8 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    //@GetMapping(value = "addOne")
-    @RequestMapping(value = "addOne")
+    @GetMapping(value = "addOne")
+    //@RequestMapping(value = "addOne")
     public Object addUser(@RequestParam(name = "name") String name,
                           @RequestParam(name = "age") int age,
                           @RequestParam(name = "sex") String sex) throws Exception {
@@ -45,8 +46,8 @@ public class UserController {
         return new ResponseResult(true, State.SUCCESS.getCode(), "");
     }
 
-    //@PostMapping(value = "query")
-    @RequestMapping(value = "query")
+    @PostMapping(value = "query")
+    //@RequestMapping(value = "query")
     public Object queryModel(@RequestParam(name = "name", defaultValue = "") String name,
                              @RequestParam(name = "sex", defaultValue = "male") String sex) throws Exception {
         logger.info(testContent);
