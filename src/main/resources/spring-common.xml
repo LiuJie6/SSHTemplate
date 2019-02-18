@@ -17,17 +17,18 @@
         <property name="locations">
             <list>
                 <value>classpath:jdbc.properties</value>
+                <value>classpath:log4j.properties</value>
             </list>
         </property>
     </bean>
 
-<!--    <bean id="mysql-DS"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${mysql.driver}"/>
-        <property name="url" value="${mysql.url}"/>
-        <property name="username" value="${mysql.username}"/>
-        <property name="password" value="${mysql.password}"/>
-    </bean>-->
+    <!--    <bean id="mysql-DS"
+              class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="${mysql.driver}"/>
+            <property name="url" value="${mysql.url}"/>
+            <property name="username" value="${mysql.username}"/>
+            <property name="password" value="${mysql.password}"/>
+        </bean>-->
     <bean id="mysql-DS"
           class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="${mysql.username}"/>
