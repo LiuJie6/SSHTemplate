@@ -37,6 +37,9 @@ public class UserServiceImpl implements IUserService {
         if (age < 0) {
             throw new Exception("年龄错误");
         }
+        if (!"female".equals(sex) || !"male".equals(sex)) {
+            throw new Exception("性别只能为female或者male");
+        }
         userModel.setName(name);
         userModel.setAge(age);
         userModel.setSex(sex);
