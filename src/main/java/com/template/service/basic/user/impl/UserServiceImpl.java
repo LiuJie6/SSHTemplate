@@ -27,37 +27,41 @@ public class UserServiceImpl implements IUserService {
     /**
      * 添加一个user
      *
-     * @param name 姓名
-     * @param age  年龄
-     * @param sex  性别
+     * @param name     姓名
+     * @param age      年龄
+     * @param sex      性别
+     * @param password 密码
      */
     @Override
-    public void addUser(String name, int age, String sex) throws Exception {
+    public void addUser(String name, int age, String sex, String password) throws Exception {
         UserModel userModel = new UserModel();
         if (age < 0) {
             throw new Exception("年龄错误");
         }
-        if (!"female".equals(sex) || !"male".equals(sex)) {
+        if (!"female".equals(sex) && !"male".equals(sex)) {
             throw new Exception("性别只能为female或者male");
         }
-        userModel.setName(name);
+        userModel.setUsername(name);
         userModel.setAge(age);
         userModel.setSex(sex);
+        userModel.setPassword(password);
         this.userDao.addUser(userModel);
     }
 
     /**
      * 通过name查询user
      *
-     * @param name 姓名
-     * @param sex  性别
+     * @param name     姓名
+     * @param sex      性别
+     * @param password 密码
      * @return 查询结果
      */
     @Override
-    public UserModel queryModel(String name, String sex) throws Exception {
+    public UserModel queryModel(String name, String sex, String password) throws Exception {
         UserModel userModel = new UserModel();
-        userModel.setName(name);
+        userModel.setUsername(name);
         userModel.setSex(sex);
+        userModel.setPassword(password);
         return this.userDao.queryModel(userModel);
     }
 }

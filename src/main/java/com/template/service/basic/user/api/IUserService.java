@@ -16,18 +16,20 @@ public interface IUserService {
     /**
      * 添加一个user
      *
-     * @param name 姓名
-     * @param age  年龄
-     * @param sex  性别
+     * @param name     姓名
+     * @param age      年龄
+     * @param sex      性别
+     * @param password 密码
      */
-    void addUser(String name, int age, String sex) throws Exception;
+    void addUser(String name, int age, String sex, String password) throws Exception;
 
     /**
      * 查询user
      *
-     * @param name 姓名
-     * @param sex  性别
+     * @param name     姓名
+     * @param sex      性别
+     * @param password 密码
      * @return 查询结果
      */
-    UserModel queryModel(String name, String sex) throws Exception;
+    UserModel queryModel(String name, String sex, String password) throws Exception;
 }

@@ -59,14 +59,17 @@ public class UserDaoImpl implements IUserDao {
         if (userModel.getUserId() > 0) {
             conditions.add("model.userId=" + userModel.getUserId());
         }
-        if (userModel.getName() != null && !userModel.getName().isEmpty()) {
-            conditions.add("model.name='" + userModel.getName() + "'");
+        if (userModel.getUsername() != null && !userModel.getUsername().isEmpty()) {
+            conditions.add("model.username='" + userModel.getUsername() + "'");
         }
         if (userModel.getAge() > 0) {
             conditions.add("model.age=" + userModel.getAge());
         }
         if (userModel.getSex() != null && !userModel.getSex().isEmpty()) {
             conditions.add("model.sex='" + userModel.getSex() + "'");
+        }
+        if (userModel.getPassword() != null && !userModel.getPassword().isEmpty()) {
+            conditions.add("model.password='" + userModel.getPassword() + "'");
         }
         return this.commonDao.getAndCondition(conditions);
     }

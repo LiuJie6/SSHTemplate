@@ -19,11 +19,13 @@ public class UserModel {
 
     private int userId;
 
-    private String name;
+    private String username;
 
     private int age;
 
     private String sex;
+
+    private String password;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,12 +40,12 @@ public class UserModel {
 
     @Basic
     @Column(name = "name")
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
@@ -66,6 +68,14 @@ public class UserModel {
         this.sex = sex;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,17 +85,19 @@ public class UserModel {
 
         if (userId != userModel.userId) return false;
         if (age != userModel.age) return false;
-        if (name != null ? !name.equals(userModel.name) : userModel.name != null) return false;
-        return sex != null ? sex.equals(userModel.sex) : userModel.sex == null;
+        if (username != null ? !username.equals(userModel.username) : userModel.username != null) return false;
+        if (sex != null ? !sex.equals(userModel.sex) : userModel.sex != null) return false;
+        return password != null ? password.equals(userModel.password) : userModel.password == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = userId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + age;
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 
@@ -93,9 +105,10 @@ public class UserModel {
     public String toString() {
         return "UserModel{" +
                 "userId=" + userId +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

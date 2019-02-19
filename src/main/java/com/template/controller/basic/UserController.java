@@ -39,19 +39,21 @@ public class UserController {
 
     @GetMapping(value = "addOne")
     //@RequestMapping(value = "addOne")
-    public Object addUser(@RequestParam(name = "name") String name,
+    public Object addUser(@RequestParam(name = "username") String name,
                           @RequestParam(name = "age") int age,
-                          @RequestParam(name = "sex") String sex) throws Exception {
-        this.userService.addUser(name, age, sex);
+                          @RequestParam(name = "sex") String sex,
+                          @RequestParam(name = "password") String password) throws Exception {
+        this.userService.addUser(name, age, sex, password);
         return new ResponseResult(true, State.SUCCESS.getCode(), "");
     }
 
     @PostMapping(value = "query")
     //@RequestMapping(value = "query")
-    public Object queryModel(@RequestParam(name = "name", defaultValue = "") String name,
-                             @RequestParam(name = "sex", defaultValue = "male") String sex) throws Exception {
+    public Object queryModel(@RequestParam(name = "username") String name,
+                             @RequestParam(name = "sex", defaultValue = "male") String sex,
+                             @RequestParam(name = "password") String password) throws Exception {
         logger.info(testContent);
-        UserModel userModel = this.userService.queryModel(name, sex);
+        UserModel userModel = this.userService.queryModel(name, sex, password);
         Map<String, Object> map = new HashMap<>();
         map.put("UserModel", userModel);
         return new ResponseResult(true, State.SUCCESS.getCode(), "", map);
